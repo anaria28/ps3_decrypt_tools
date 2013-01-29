@@ -20,9 +20,9 @@ void decrypt_hdd()
 	u32 size;
 
 	//Fetching eid_root_key
-	u8 *eid_root_key = _read_buffer("data/eid_root_key", NULL);
+	u8 *eid_root_key = _read_buffer((s8*)"data/eid_root_key", NULL);
 	//Assuming sectors start with sector 0.
-	u8 *sectors = _read_buffer("data/sectors", &size);
+	u8 *sectors = _read_buffer((s8*)"data/sectors", &size);
 
 	//Generate keys.
 	generate_ata_keys(eid_root_key, eid_root_key + 0x20, ata_k1, ata_k2);
@@ -38,20 +38,20 @@ void decrypt_hdd()
 	//Decrypt VFLASH sectors starting at sector 8.
 	decrypt_sectors(sectors+8*SECTOR_SIZE, 8, size - 8*SECTOR_SIZE, edec_k1, edec_k2, 0);
 
-	_write_buffer("data/sectors_decrypted", sectors, size);
+	_write_buffer((s8*)"data/sectors_decrypted", sectors, size);
 
 }
 
 void decrypt_eid()
 {
     //decrypting eEID
-	eid_unpack("eid/eid");
+	eid_unpack((s8*)"eid/eid");
 
-	eid0_decrypt("eid/eid0","eid/eid0decrypted");
-	eid1_decrypt("eid/eid1","eid/eid1decrypted");
-	eid2_generate_block("eid/eid2",EID2_BLOCKTYPE_P,"eid/eid2pblock");
-	eid2_generate_block("eid/eid2",EID2_BLOCKTYPE_S,"eid/eid2sblock");
-	eid4_decrypt("eid/eid4","eid/eid4decrypted");
+	eid0_decrypt((s8*)"eid/eid0",(s8*)"eid/eid0decrypted");
+	eid1_decrypt((s8*)"eid/eid1",(s8*)"eid/eid1decrypted");
+	eid2_generate_block((s8*)"eid/eid2",EID2_BLOCKTYPE_P,(s8*)"eid/eid2pblock");
+	eid2_generate_block((s8*)"eid/eid2",EID2_BLOCKTYPE_S,(s8*)"eid/eid2sblock");
+	eid4_decrypt((s8*)"eid/eid4",(s8*)"eid/eid4decrypted");
 }
 
 int main()

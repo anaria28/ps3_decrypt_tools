@@ -7,8 +7,8 @@
 #include "keys.h"
 #include "util.h"
 
-u8 *iso_root_key = _read_buffer("keys/key",NULL);
-u8 *iso_root_iv= _read_buffer("keys/iv",NULL);
+u8 *iso_root_key = _read_buffer((s8*)"data/key",NULL);
+u8 *iso_root_iv= _read_buffer((s8*)"data/iv",NULL);
 
 u8 common_indiv_seed[INDIV_SEED_SIZE] =
 {

@@ -9,7 +9,7 @@ Things you'll need
 
 How to (EID)
 
-1. Get your eid_root_key and split it into two parts, the erk (key) and riv (iv) and put them under keys
+1. Get your eid_root_key and split it into two parts, the erk (key) and riv (iv) and put them under data
 2. Get your eEID, rename it to eid(no extension) and put it into eid folder
 3. Make
 4. Run main
