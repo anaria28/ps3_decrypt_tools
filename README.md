@@ -15,6 +15,7 @@ How to (EID)
 4. Run main
 
 How to (HDD)
+
 1. Get a binary image from the ps3 hdd. you can use HxD, but linux is preferable
 2. Get your eid_root_key
 3. Place them both under the data folder
